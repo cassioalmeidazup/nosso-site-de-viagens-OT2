@@ -14,6 +14,13 @@ public class NovoPaisRequest {
         return nome;
     }
 
+    public NovoPaisRequest(@NotBlank String nome) {
+        this.nome = nome;
+    }
+
+    public NovoPaisRequest() {
+    }
+
     @Override
     public String toString() {
         return "NovoPaisRequest{" +
