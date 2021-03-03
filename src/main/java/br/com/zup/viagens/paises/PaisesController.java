@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
@@ -14,11 +15,16 @@ import javax.validation.Valid;
 public class PaisesController {
 
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager manager;
 
     @PostMapping
+    @Transactional
     public String criaPais(@Valid @RequestBody NovoPaisRequest request){
-        return request.toString();
+
+        Pais pais = request.toModel();
+        manager.persist(pais);
+
+        return pais.toString();
 
     }
 }

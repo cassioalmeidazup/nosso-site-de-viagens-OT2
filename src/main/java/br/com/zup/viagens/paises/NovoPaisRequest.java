@@ -17,4 +17,8 @@ public class NovoPaisRequest {
                 "nome='" + nome + '\'' +
                 '}';
     }
+
+    public Pais toModel() {
+        return new Pais(nome);
+    }
 }
