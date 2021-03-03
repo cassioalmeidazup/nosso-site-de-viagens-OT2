@@ -18,6 +18,7 @@ public class NovoPaisRequest {
         this.nome = nome;
     }
 
+    @Deprecated
     public NovoPaisRequest() {
     }
 

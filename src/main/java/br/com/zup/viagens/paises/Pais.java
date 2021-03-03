@@ -26,4 +26,12 @@ public class Pais {
     public String getNome() {
         return nome;
     }
+
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }
