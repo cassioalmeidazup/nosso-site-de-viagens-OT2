@@ -29,7 +29,9 @@ public class UnicoValorValidator implements ConstraintValidator<UnicoValor, Obje
         $query.setParameter("value", value);
 
         List<?>list= $query.getResultList();
-        Assert.isTrue(list.size() <=1);
-        return false;
+        Assert.isTrue(list.size() <=1,"[BUG] Existem multiplos registros com o valor unico fornecido");
+
+
+        return list.isEmpty();
     }
 }
