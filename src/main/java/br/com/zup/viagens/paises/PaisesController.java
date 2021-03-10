@@ -24,12 +24,12 @@ public class PaisesController {
 
     @PostMapping
     @Transactional
-    public String criaPais(@Valid @RequestBody NovoPaisRequest request)  {
+    public ResponseEntity<Void> criaPais(@Valid @RequestBody NovoPaisRequest request, UriComponentsBuilder uriComponentsBuilder)  {
 
         Pais pais = request.toModel();
         manager.persist(pais);
 
-        return pais.toString();
-
+        URI uri = uriComponentsBuilder.path("/api/paises/{id}").buildAndExpand(pais.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }
