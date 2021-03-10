@@ -2,6 +2,7 @@ package br.com.zup.viagens.companhia;
 
 import br.com.zup.viagens.compartilhado.UnicoValor;
 import br.com.zup.viagens.paises.Pais;
+import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +22,7 @@ public class NovaCompanhiaRequest {
 
     public Companhia toModel(EntityManager entityManager) {
         Pais pais = entityManager.find(Pais.class, this.idPais);
+        Assert.notNull(pais,"deu ruim, id informado inválido.");
         return new Companhia(this.nome, pais);
     }
 }

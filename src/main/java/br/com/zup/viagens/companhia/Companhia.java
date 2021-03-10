@@ -14,15 +14,20 @@ public class Companhia {
     private String nome;
     @ManyToOne
     private Pais pais;
-    private LocalDateTime localDateTime;
+    @Column(updatable = false)
+    private LocalDateTime criadoEm;
 
     public Companhia(String nome, Pais pais) {
         this.nome = nome;
         this.pais = pais;
-        this.localDateTime = LocalDateTime.now();
+        this.criadoEm = LocalDateTime.now();
     }
 
     @Deprecated
     protected Companhia() {
+    }
+
+    public Long getId() {
+        return this.id;
     }
 }
