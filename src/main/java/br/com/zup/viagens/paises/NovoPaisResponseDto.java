@@ -6,7 +6,7 @@ public class NovoPaisResponseDto {
 
     private String nome;
 
-    public NovoPaisResponseDto(Optional<Pais> pais) {
+    public NovoPaisResponseDto(Pais pais) {
         this.nome = pais.getNome();
     }
 

@@ -38,8 +38,10 @@ public class PaisesController {
 
        Optional<Pais> pais = Optional.ofNullable(manager.find(Pais.class, id));
        if(pais.isEmpty()){
-           return ResponseStatus(HttpStatus.NOT_FOUND).build();
+           return ResponseEntity.notFound().build();
        }
-       return ResponseEntity.ok(new NovoPaisResponseDto(pais));
+       return ResponseEntity.ok(new NovoPaisResponseDto(pais.get()));
 
     }
+    
+}
